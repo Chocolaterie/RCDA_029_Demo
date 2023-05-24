@@ -1,11 +1,14 @@
 package fr.example.demo.injection;
 
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 public class ServicePerson {
 
+	int counter = 0;
+	
 	public void test() {
-		System.out.println("Test DAO");
+		counter++;
+		System.out.println(counter);
 	}
 }

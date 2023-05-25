@@ -24,6 +24,11 @@ public class HomeController {
 		return "home";
 	}
 	
+	@GetMapping("test-redirect")
+	public String testRedirect() {
+		return "redirect:/default-article";
+	}
+	
 	@GetMapping("default-article")
 	public String defaultArticle(Model model) {
 		// Creer une donnée
@@ -33,7 +38,7 @@ public class HomeController {
 		model.addAttribute("articleName", articleName);
 		
 		// Retourner la page
-		return "article.html";
+		return "article";
 	}
 	
 	@GetMapping("article/{id}")

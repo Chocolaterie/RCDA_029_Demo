@@ -2,9 +2,7 @@ package fr.example.demo.bll;
 
 import java.util.Arrays;
 import java.util.List;
-
 import org.springframework.stereotype.Service;
-
 import fr.example.demo.bo.Person;
 
 @Service

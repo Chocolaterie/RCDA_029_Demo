@@ -19,9 +19,11 @@
             <div class="uk-child-width-1-2@s uk-grid-match" uk-grid>
 
                 <!-- Pour chaque personne -->
-                <div th:each="person : ${persons}" class="uk-card uk-card-default uk-card-hover uk-card-body">
-                    <h3 class="uk-card-title" th:text="${person.lastname}"></h3>
-                    <p th:text="${person.firstname}"></p>
+                <div th:each="person : ${persons}">
+                    <div class="uk-card uk-card-default uk-card-hover uk-card-body">
+                        <h3 class="uk-card-title" th:text="${person.lastname}"></h3>
+                        <p th:text="${person.firstname}"></p>
+                    </div>
                 </div>
             </div>
         </div>

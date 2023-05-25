@@ -23,6 +23,9 @@
                     <div class="uk-card uk-card-default uk-card-hover uk-card-body">
                         <h3 class="uk-card-title" th:text="${person.lastname}"></h3>
                         <p th:text="${person.firstname}"></p>
+                        <!-- Lien pour rediriger sur le form -->
+                        <!-- Exemple du resultat généré : /person/isaac -->
+                        <a th:href="@{'/person/' + ${person.slug}}">Voir</a>
                     </div>
                 </div>
             </div>

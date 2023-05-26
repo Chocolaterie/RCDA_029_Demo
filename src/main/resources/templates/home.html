@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-<h1>Bienvenue sur le site testtst</h1>
-</body>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<h1>Bienvenue sur le site testtst</h1>
+		
+		<!-- Afficher le div que si loggedUser existe -->
+		<div th:if="${loggedUser != null}">
+			<p th:text="${loggedUser.pseudo}"></p>
+		</div>
+		
+	</body>
 </html>

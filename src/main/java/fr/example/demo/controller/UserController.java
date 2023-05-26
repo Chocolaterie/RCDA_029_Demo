@@ -24,8 +24,16 @@ public class UserController {
 	public String showLoggedUser(Model model) {
 		
 		AppUser loggedUser = (AppUser) model.getAttribute("loggedUser");
-		System.out.println(loggedUser.getPseudo());
-		
+				
+		// Si je suis deconnecté(e) (donc AppUser est Null)
+		if (loggedUser == null) {
+			System.out.println("Vous êtes deconnecté(e)");
+		}
+		// Je suis connecté(e)
+		else {
+			System.out.println(String.format("Vous êtes connecté :  %s", loggedUser.getPseudo()));
+		}
+
 		return "home";
 	}
 	

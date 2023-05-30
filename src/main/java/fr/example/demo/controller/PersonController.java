@@ -1,6 +1,7 @@
 package fr.example.demo.controller;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -29,7 +30,7 @@ public class PersonController {
 		// 2 : Retourner la vue
 		return "person/persons-list";
 	}
-	
+
 	@GetMapping("person/{slug}")
 	public String person(@PathVariable("slug") String slug, Model model) {
 		
@@ -65,7 +66,7 @@ public class PersonController {
 		}
 		// Edition
 		else {
-			System.out.println("Creation");
+			System.out.println("Edition");
 			
 			// Modifier dans la liste de données
 			personService.editPerson(person);

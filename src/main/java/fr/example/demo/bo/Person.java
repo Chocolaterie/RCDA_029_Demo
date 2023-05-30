@@ -1,7 +1,10 @@
 package fr.example.demo.bo;
 
-public class Person {
+import org.springframework.beans.factory.annotation.Autowired;
+import fr.example.demo.bll.PersonService;
 
+public class Person{
+	
 	protected String slug;
 	protected String firstname;
 	protected String lastname;

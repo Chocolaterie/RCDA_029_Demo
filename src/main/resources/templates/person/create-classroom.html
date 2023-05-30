@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- Header -->
+<div th:include="includes/header"></div>
+
+<!-- Content -->
+<section class="uk-section uk-article">
+    <div class="uk-container uk-container-small">
+        <h2 class="uk-text-bold uk-h1 uk-margin-remove-adjacent uk-margin-remove-top">Person</h2>
+    
+        <!-- // Formulaire  -->
+        <form action="/create-classroom" method="post" th:object="${classroom}">
+
+            <fieldset class="uk-fieldset">
+
+                <legend class="uk-legend">Form Person</legend>
+
+				<!-- Le select de l'enseignant -->
+				<select class="uk-select" th:field="${classroom.teacher}">
+                	<option th:each="person : ${personOptions}" th:value="${person.slug}" th:text="${person.firstname}"></option>
+                </select>
+                
+                 <select class="uk-select" th:field="${classroom.students}" multiple>
+                	<option th:each="person : ${personOptions}" th:value="${person.slug}" th:text="${person.firstname}"></option>
+                </select>
+
+                <!-- Bouton Submit -->
+                <div class="uk-margin" uk-margin>
+                    <button class="uk-button uk-button-default">Submit</button>
+                </div>
+            
+            </fieldset>
+        </form>
+
+    </div>
+</section>
+<!-- ./Content -->
+<!-- Footer -->
+<div th:include="includes/footer"></div>
+
+</html>

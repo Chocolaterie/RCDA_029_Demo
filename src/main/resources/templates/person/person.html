@@ -12,6 +12,8 @@
         <!-- // Formulaire  -->
         <form action="/person" method="post" th:object="${formPerson}">
 
+			<input type="hidden" th:field="${person.slug}">
+
             <fieldset class="uk-fieldset">
 
                 <legend class="uk-legend">Form Person</legend>

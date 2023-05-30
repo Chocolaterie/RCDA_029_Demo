@@ -42,10 +42,40 @@ public class PersonController {
 		return "person/person";
 	}
 	
+	/**
+	 * Créer/Modifier une personne
+	 * @param person
+	 * @return
+	 */
 	@PostMapping("person")
 	public String personSubmit(@ModelAttribute("formPerson") Person person) {
 		
 		System.out.println(String.format("Person : %s", person.getFirstname()));
+		
+		// Si vide ou null => Creation
+		if (null == person.getSlug()) {
+			// Générer un slug
+			String generateSlug = String.format("slug_%s_%s", person.getFirstname(), person.getLastname());
+			person.setSlug(generateSlug);
+			
+			System.out.println("Creation");
+			
+			// Ajouter dans la liste de données
+			personService.addPerson(person);
+		}
+		// Edition
+		else {
+			System.out.println("Creation");
+			
+			// Modifier dans la liste de données
+			personService.editPerson(person);
+		}
+		
+		// Je recois slug
+		// est-ce que l'user connecté à le droit de modifier un article avec ce slug
+		
+		// Métier
+		
 		
 		return "redirect:/";
 	}

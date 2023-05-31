@@ -87,7 +87,7 @@ public class PersonController {
 	 * @return
 	 */
 	@PostMapping("old-person")
-	public String personSubmit(@ModelAttribute("formPerson") Person person) {
+	public String personSubmit(@ModelAttribute("person") Person person) {
 		
 		System.out.println(String.format("Person : %s", person.getFirstname()));
 		

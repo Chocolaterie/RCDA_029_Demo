@@ -10,7 +10,7 @@
         <h2 class="uk-text-bold uk-h1 uk-margin-remove-adjacent uk-margin-remove-top">Person</h2>
     
         <!-- // Formulaire  -->
-        <form action="/person" method="post" th:object="person">
+        <form action="/person" method="post" th:object="${person}">
 
 			<input type="hidden" th:field="${person.slug}">
 

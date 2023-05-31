@@ -19,8 +19,8 @@
 				 <!-- Champ de saisie title -->
                 <div class="uk-margin">
                     <div class="uk-form-label">Titre</div>
-                      <!-- Les erreurs du champ title -->
-                      <ul th:if="${#fields.hasErrors('title')}">
+                    <!-- Les erreurs du champ title -->
+                    <ul th:if="${#fields.hasErrors('title')}">
                         <li class="uk-form-danger" th:each="error : ${#fields.errors('title')}" th:text="${error}"></li>
                     </ul>
                     <div class="uk-form-controls">

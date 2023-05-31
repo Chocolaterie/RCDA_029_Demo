@@ -1,12 +1,19 @@
 package fr.example.demo.bo;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import fr.example.demo.bll.PersonService;
 
 public class Person{
 	
 	protected String slug;
+	
+	@NotBlank
+	@Size(min=3)
 	protected String firstname;
+	
 	protected String lastname;
 	
 	/**
@@ -20,6 +27,10 @@ public class Person{
 		this.lastname = lastname;
 	}
 	
+	public Person() {
+		// TODO Auto-generated constructor stub
+	}
+
 	/**
 	 * @return the slug
 	 */

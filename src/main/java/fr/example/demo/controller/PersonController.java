@@ -5,9 +5,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import fr.example.demo.bll.PersonService;
 import fr.example.demo.bo.Person;
+import fr.example.demo.bo.ServiceResult;
 
 @Controller
 public class PersonController {
@@ -44,11 +48,45 @@ public class PersonController {
 	}
 	
 	/**
+	 * Formulaire add person
+	 * @param slug
+	 * @param model
+	 * @return
+	 */
+	@GetMapping("add-person")
+	public String person(Model model) {
+		
+		// Envoyer dans le model
+		model.addAttribute("person", new Person());
+		
+		return "person/person";
+	}
+	
+	@PostMapping("person")
+	public String personSubmit(@Valid @ModelAttribute("person") Person person, BindingResult bindingResult) {
+		
+		// 1 :: Controle de surface
+		if(!bindingResult.hasErrors()) {
+			
+			// 2 :: Controle/Execution métier
+			ServiceResult result = personService.addPersonCustom(person);
+		
+			// 3 :: Tout est ok
+			if (result.isValid()) {
+				System.out.println("C'est ok");
+				
+				return "redirect:/";
+			}
+		}
+		return "person/person";
+	}
+	
+	/**
 	 * Créer/Modifier une personne
 	 * @param person
 	 * @return
 	 */
-	@PostMapping("person")
+	@PostMapping("old-person")
 	public String personSubmit(@ModelAttribute("formPerson") Person person) {
 		
 		System.out.println(String.format("Person : %s", person.getFirstname()));

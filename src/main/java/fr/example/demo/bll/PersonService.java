@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import fr.example.demo.bo.Person;
+import fr.example.demo.bo.ServiceResult;
 
 @Service
 public class PersonService {
@@ -64,5 +65,23 @@ public class PersonService {
 			persons.set(indexToEdit, person);
 		}
 	
+	}
+	
+	public ServiceResult addPersonCustom(Person person) {
+		ServiceResult result = new ServiceResult();
+		
+		// Tester si le prenom est n'est pas existant
+		for (Person currentPerson : persons) {
+			if (currentPerson.getFirstname().equals(person.getFirstname())) {
+				result.addError("Une personne porte déjà ce prénom");
+			}
+		}
+		
+		// If no error
+		if (result.isValid()) {
+			persons.add(person);
+		}
+		
+		return result;
 	}
 }

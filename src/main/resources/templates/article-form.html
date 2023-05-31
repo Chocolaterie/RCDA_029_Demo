@@ -10,22 +10,23 @@
         <h2 class="uk-text-bold uk-h1 uk-margin-remove-adjacent uk-margin-remove-top">Person</h2>
     
         <!-- // Formulaire  -->
-        <form action="/person" method="post" th:object="person">
-
-			<input type="hidden" th:field="${person.slug}">
+        <form action="/add-article" method="post" th:object="${article}">
 
             <fieldset class="uk-fieldset">
 
-                <legend class="uk-legend">Form Person</legend>
+                <legend class="uk-legend">Form Article</legend>
 
-                <!-- Champ de saisie Firstname -->
+				 <!-- Champ de saisie title -->
                 <div class="uk-margin">
-                    <input class="uk-input" type="text" th:field="${person.firstname}" placeholder="Firstname" aria-label="Input">
-                </div>
-
-                <!-- Champ de saisie Lastname -->
-                <div class="uk-margin">
-                    <input class="uk-input" type="text" th:field="${person.lastname}" placeholder="Lastname" aria-label="Input">
+                    <div class="uk-form-label">Titre</div>
+                      <!-- Les erreurs du champ title -->
+                      <ul th:if="${#fields.hasErrors('title')}">
+                        <li class="uk-form-danger" th:each="error : ${#fields.errors('title')}" th:text="${error}"></li>
+                    </ul>
+                    <div class="uk-form-controls">
+                        <input class="uk-input" th:class="${#fields.hasErrors('title')} ? 'uk-input uk-form-danger' : 'uk-input'" type="text" th:field="${article.title}" placeholder="Title"
+                            aria-label="Input">
+                    </div>
                 </div>
 
                 <!-- Bouton Submit -->
